@@ -50,8 +50,8 @@ pre.scroll { border: 1px solid #666; padding: 5px; }
     <div><i class="fas fa-exclamation-circle fa-5x red back"></i>&nbsp;&nbsp;<b>Important Notes:</b></div>
     <p>This version of <em>One-Page Checkout</em> supports Zen Cart <em>1.5.8 and later, including 2.1.0 and 2.2.x</em> &hellip; <b>only</b>. The <a href="#install">installation instructions</a> for <em>OPC</em> differ, depending on the version of Zen Cart on which your site runs.</p>
     <ol>
-        <li>For zc158, zc158a, zc200 and zc201, there are <span class="corefile">core-file overwrites</span> for the <code>order_status</code> page if you want to include <em>OPC</em>'s version.</li>
-        <li>For zc210 and later, no such overwrites are needed as <em>OPC</em>'s version of the page is now in-core.</li>
+        <li>For zc158, zc158a, zc20x and zc210, there are <span class="corefile">core-file overwrites</span> for the <code>order_status</code> page if you want to include <em>OPC</em>'s updates.</li>
+        <li>For zc221 and later, no such overwrites are needed as <em>OPC</em>'s now distributes that version of the files.</li>
     </ol>
 
     <p class="clearBoth"><b>Credits:</b></p>
@@ -74,7 +74,7 @@ pre.scroll { border: 1px solid #666; padding: 5px; }
         <li>Tableau (numinix)</li>
         <li>YourStore (themeforest)</li>
     </ol>
-    <p>One-Page Checkout has been validated with the <a href="https://www.zen-cart.com/downloads.php?do=file&id=2191" target="_blank" rel="noopener">ZCA Bootstrap Template</a>, <b>v3.6.4</b> and later; best supported by v3.7.7 and later.</p>
+    <p>One-Page Checkout has been validated with the <a href="https://www.zen-cart.com/downloads.php?do=file&id=2191" target="_blank" rel="noopener">ZCA Bootstrap Template</a>, <b>v3.7.8</b> and later; best supported by v3.7.9 and later.  It's also been validated with the built-in <code>responsive_classic</code> template provided by Zen Cart 2.2.1.</p>
 
     <div class="box-border">
         <p>The plugin checks (on confirmation) that the order's information hasn't changed by inspecting the customer's session, ensuring that what the customer saw on the checkout page is the same on confirmation page.  There are order-total modules that make changes to those session-based settings, resulting in an order-confirmation loop and are, as such, incompatible with <em>One-Page Checkout</em>:</p>
@@ -149,7 +149,7 @@ pre.scroll { border: 1px solid #666; padding: 5px; }
     <p class="fs-larger"><b>Note:</b> Starting with v2.5.5 of <em>OPC</em>, <b>an initial installation on Zen Cart versions prior to 1.5.8 is no longer supported</b>!</p>
     <p>There are <span class="template">template-override</span> changes required by this plugin; you should <strong>always</strong> backup your cart's database and files prior to making any changes.  Unzip the plugin's package file and then:</p>
     <ol type="A">
-        <li>If your store is running on <b>Zen Cart 1.5.8 through 2.0.1</b>, there are <span class="corefile">core-file overwrites</span> required. Those Zen Cart versions include an <code>order_status</code> page that performs a simple redirect to the customer's account, while the version provided by <em>OPC</em> supports guests viewing their previously-placed orders as well. If that's your case:<ol type="a">
+        <li>If your store is running on a Zen Cart version <b>prior to 2.2.1</b>, there are <span class="corefile">core-file overwrites</span> required. If that's your case:<ol type="a">
             <li>Rename your current <code>header_php.php</code> in the <code>/includes/modules/pages/order_status</code> sub-directory to <code>header_php.php.notused</code>.</li>
             <li>Rename your current <code>tpl_order_status_default.php</code> in the <code>/includes/templates/template_default/templates</code> sub-directory to <code>tpl_order_status_default.php.notused</code>.</li>
         </ol></li>
@@ -172,7 +172,7 @@ pre.scroll { border: 1px solid #666; padding: 5px; }
         </ol></li>
         <li>Rename the YOUR_ADMIN sub-directory to match your store's admin-sub-directory name.</li>
         <li>Sign into your Zen Cart's admin panel.  Due the the number of files that require uploading, I suggest that you place the site into <em>Maintenance Mode</em> by setting <b><i>Configuration :: Website Maintenance :: Down for Maintenance: ON/OFF</i></b> to <em>true</em>.</li>
-        <li>Copy the plugin's <em>new</em> files &mdash; with the sub-directories renamed as identified in steps <b>A</b> and <b>B</b> and the file-merges performed as identified in step <b>B</b> &mdash; to your store's directory structure. <b>Note that there are two files that <i>should not be copied</i> for Zen Cart version 2.2.0 and later!</b> You'll use either your webhost's cPanel File Manager or an FTP program (like WinSCP or FileZilla) to perform this copy.<ol>
+        <li>Copy the plugin's <em>new</em> files &mdash; with the sub-directories renamed as identified in steps <b>A</b> and <b>B</b> and the file-merges performed as identified in step <b>B</b> &mdash; to your store's directory structure. <b>Note that there are two files that <i>should not be copied</i> for Zen Cart version 2.2.1 and later!</b> You'll use either your webhost's cPanel File Manager or an FTP program (like WinSCP or FileZilla) to perform this copy.<ol>
             <li>/includes/auto_loaders/config.checkout_one.php</li>
             <li>/includes/auto_loaders/paypal_ipn.checkout_one.php</li>
             <li>/includes/classes/OnePageCheckout.php</li>
@@ -228,7 +228,7 @@ pre.scroll { border: 1px solid #666; padding: 5px; }
             <li>/includes/modules/pages/login/header_php_login_guest.php</li>
             <li>/includes/modules/pages/login/jscript_opc_reset_guest_for_ppec.php</li>
             <li>/includes/modules/pages/login/main_template_vars.php</li>
-            <li><span class="corefile">/includes/modules/pages/order_status/header_php.php <span class="smaller">(Copy <b class="larger">only</b> for Zen Cart versions prior to 2.2.0)</span></span></li>
+            <li><span class="corefile">/includes/modules/pages/order_status/header_php.php <span class="smaller">(Copy <b class="larger">only</b> for Zen Cart versions prior to 2.2.1)</span></span></li>
             <li>/includes/modules/pages/shopping_cart/jscript_opc_reset_guest_for_ppec.php</li>
             <li>/includes/templates/template_default/css/checkout_one.css</li>
             <li>/includes/templates/template_default/css/checkout_one_confirmation.css</li>
@@ -256,7 +256,7 @@ pre.scroll { border: 1px solid #666; padding: 5px; }
             <li>/includes/templates/template_default/templates/tpl_modules_opc_shipping_choices.php</li>
             <li>/includes/templates/template_default/templates/tpl_modules_opc_shopping_cart.php</li>
             <li>/includes/templates/template_default/templates/tpl_modules_opc_submit_block.php</li>
-            <li><span class="corefile">/includes/templates/template_default/templates/tpl_order_status_default.php <span class="smaller">(Copy <b class="larger">only</b> for Zen Cart versions prior to 2.2.0)</span></span></li>
+            <li><span class="corefile">/includes/templates/template_default/templates/tpl_order_status_default.php <span class="smaller">(Copy <b class="larger">only</b> for Zen Cart versions prior to 2.2.1)</span></span></li>
             <li>/includes/templates/YOUR_TEMPLATE/css/checkout_one.css</li>
             <li>/includes/templates/YOUR_TEMPLATE/css/checkout_one_confirmation.css</li>
             <li>/includes/templates/YOUR_TEMPLATE/css/checkout_success.css</li>
@@ -298,7 +298,7 @@ pre.scroll { border: 1px solid #666; padding: 5px; }
     <h3>Changes and Bugfixes</h3>
     <p>You can view the details of these changes on the plugin's <a href="https://github.com/lat9/one_page_checkout/issues" target="_blank" rel="noopener">GitHub repository</a>. <span class="template-changed">Changes to the plugin's default templates are identified in this color</span>; remember to merge those changes with any template-override version you might have created!  Additions are identified by <span class="added">this</span> color and removals are indicated like <span class="removed">this</span>.</p>
     <ul>
-        <li>v2.6.0-beta3, 2026-03-28 (lat9):<ul>
+        <li>v2.6.0, 2026-03-30 (lat9):<ul>
             <li>BUGFIX: Correct unwanted PHP Fatal errors when OPC session is missing or isn't an object.</li>
             <li>CHANGE: Ensure admin language files are in array format.</li>
             <li>CHANGE: Complete updates recognizing features provided by zc158 and later.</li>
